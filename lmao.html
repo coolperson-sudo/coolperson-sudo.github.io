@@ -3,100 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✌✌</title>
-    <style>
-        /* basic reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #1e1e2e;
-            overflow: hidden;
-        }
-
-        /* popup window styling */
-        .popup {
-            position: absolute;
-            width: 300px;
-            height: 200px;
-            background-color: #ffffff;
-            border: 2px solid #000000;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            color: #000000;
-        }
-    </style>
+    <title>hi😎</title>
 </head>
 <body>
-    <div class="popup" id="popup1">popup 1</div>
-    <div class="popup" id="popup2">popup 2</div>
+    <h1 style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">disable popups for some fun!</h1>
 
     <script>
-        // create an object for each popup
+        // create an array of popup configurations
         const popups = [
             {
-                element: document.getElementById('popup1'),
-                posX: Math.random() * (window.innerWidth - 300),
-                posY: Math.random() * (window.innerHeight - 200),
-                speedX: 6, // speed for popup 1
-                speedY: 4
+                name: "FUN!!",
+                width: 300,
+                height: 200,
+                speedX: 6,
+                speedY: 4,
+                resizeSpeed: 2
             },
             {
-                element: document.getElementById('popup2'),
-                posX: Math.random() * (window.innerWidth - 300),
-                posY: Math.random() * (window.innerHeight - 200),
-                speedX: 8, // speed for popup 2
-                speedY: 5
+                name: "FUN!!",
+                width: 400,
+                height: 250,
+                speedX: 8,
+                speedY: 5,
+                resizeSpeed: 3
             }
         ];
 
-        // function to move a popup
-        function movePopup(popup) {
-            popup.posX += popup.speedX;
-            popup.posY += popup.speedY;
+        // function to create and animate a popup
+        function createMovingPopup(config) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
 
-            // bounce on the edges
-            if (popup.posX <= 0 || popup.posX >= window.innerWidth - popup.element.offsetWidth) {
-                popup.speedX = -popup.speedX;
-            }
-            if (popup.posY <= 0 || popup.posY >= window.innerHeight - popup.element.offsetHeight) {
-                popup.speedY = -popup.speedY;
+            // open the popup window
+            let popup = window.open("", config.name, `width=${config.width},height=${config.height},left=0,top=0`);
+            popup.document.write(`<h1 style="text-align: center; font-family: Arial, sans-serif;">${config.name}</h1>`);
+
+            // initial position and resizing variables
+            let posX = Math.random() * (screenWidth - config.width);
+            let posY = Math.random() * (screenHeight - config.height);
+            let resizeDirection = 1; // 1 means growing, -1 means shrinking
+
+            // function to move and resize the popup
+            function moveAndResize() {
+                posX += config.speedX;
+                posY += config.speedY;
+
+                // bounce on edges
+                if (posX <= 0 || posX >= screenWidth - config.width) {
+                    config.speedX = -config.speedX;
+                }
+                if (posY <= 0 || posY >= screenHeight - config.height) {
+                    config.speedY = -config.speedY;
+                }
+
+                // resize logic
+                config.width += config.resizeSpeed * resizeDirection;
+                config.height += config.resizeSpeed * resizeDirection;
+
+                // reverse direction if limits are reached
+                if (config.width >= 500 || config.width <= 200) {
+                    resizeDirection *= -1;
+                }
+
+                // move and resize the popup
+                popup.moveTo(posX, posY);
+                popup.resizeTo(config.width, config.height);
             }
 
-            // apply new position
-            popup.element.style.left = `${popup.posX}px`;
-            popup.element.style.top = `${popup.posY}px`;
+            // start the animation
+            setInterval(moveAndResize, 20);
         }
 
-        // move both popups
-        function moveAllPopups() {
-            popups.forEach(movePopup);
-        }
-
-        // initialize both popups
-        popups.forEach(popup => {
-            popup.element.style.position = 'absolute';
-            popup.element.style.left = `${popup.posX}px`;
-            popup.element.style.top = `${popup.posY}px`;
-        });
-
-        // set interval for movement
-        setInterval(moveAllPopups, 20);
+        // create all popups
+        popups.forEach(createMovingPopup);
     </script>
 </body>
 </html>
