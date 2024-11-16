@@ -3,79 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>😎😎</title>
-    <script>
-        // function
-        function spawnMovingPopup() {
-            // open window
-            const popup = window.open(
-                "", 
-                "FlyingPopup", 
-                "width=200,height=150,resizable=no,scrollbars=no"
-            );
-
-            if (!popup) {
-                alert("the trolling will not happen if u wont allow popups for this site :sob:");
-                return;
-            }
-
-            // write content to popup
-            popup.document.write(`
-                <html>
-                    <head>
-                        <title>lololol</title>
-                        <style>
-                            body {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                font-family: Arial, sans-serif;
-                                background-color: aqua;
-                                color: black;
-                                margin: 0;
-                                height: 100%;
-                                overflow: hidden;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>ur retarded!</h1>
-                    </body>
-                </html>
-            `);
-            popup.document.close();
-
-            // Position variables
-            let posX = 100;
-            let posY = 100;
-            let directionX = 1;
-            let directionY = 1;
-
-            // move the popup
-            setInterval(() => {
-                const screenWidth = screen.availWidth;
-                const screenHeight = screen.availHeight;
-
-                // change direction
-                if (posX <= 0 || posX + 200 >= screenWidth) directionX *= -1;
-                if (posY <= 0 || posY + 150 >= screenHeight) directionY *= -1;
-
-                // update position
-                posX += directionX * 10;
-                posY += directionY * 10;
-
-                // move the popup
-                popup.moveTo(posX, posY);
-            }, 50);
+    <title>✌✌</title>
+    <style>
+        /* basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        // spawn the popup on page load
-        window.onload = spawnMovingPopup;
-    </script>
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e2e;
+            overflow: hidden;
+        }
+
+        /* popup window styling */
+        .popup {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #000000;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="color: white; text-align: center; font-family: Arial, sans-serif;">
-        your an retard for going into this website!
-    </h1>
+    <div class="popup" id="popup1">popup 1</div>
+    <div class="popup" id="popup2">popup 2</div>
+
+    <script>
+        // create an object for each popup
+        const popups = [
+            {
+                element: document.getElementById('popup1'),
+                posX: Math.random() * (window.innerWidth - 300),
+                posY: Math.random() * (window.innerHeight - 200),
+                speedX: 6, // speed for popup 1
+                speedY: 4
+            },
+            {
+                element: document.getElementById('popup2'),
+                posX: Math.random() * (window.innerWidth - 300),
+                posY: Math.random() * (window.innerHeight - 200),
+                speedX: 8, // speed for popup 2
+                speedY: 5
+            }
+        ];
+
+        // function to move a popup
+        function movePopup(popup) {
+            popup.posX += popup.speedX;
+            popup.posY += popup.speedY;
+
+            // bounce on the edges
+            if (popup.posX <= 0 || popup.posX >= window.innerWidth - popup.element.offsetWidth) {
+                popup.speedX = -popup.speedX;
+            }
+            if (popup.posY <= 0 || popup.posY >= window.innerHeight - popup.element.offsetHeight) {
+                popup.speedY = -popup.speedY;
+            }
+
+            // apply new position
+            popup.element.style.left = `${popup.posX}px`;
+            popup.element.style.top = `${popup.posY}px`;
+        }
+
+        // move both popups
+        function moveAllPopups() {
+            popups.forEach(movePopup);
+        }
+
+        // initialize both popups
+        popups.forEach(popup => {
+            popup.element.style.position = 'absolute';
+            popup.element.style.left = `${popup.posX}px`;
+            popup.element.style.top = `${popup.posY}px`;
+        });
+
+        // set interval for movement
+        setInterval(moveAllPopups, 20);
+    </script>
 </body>
 </html>
