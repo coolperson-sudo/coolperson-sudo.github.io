@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lmao.</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* fullscreen body */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1e1e1e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* popup box */
+        .popup {
+            position: absolute;
+            width: 150px;
+            height: 100px;
+            background-color: aqua;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: flyAcross 5s linear infinite;
+        }
+
+        /* animation */
+        @keyframes flyAcross {
+            0% {
+                top: 10%;
+                left: 0%;
+            }
+            25% {
+                top: 10%;
+                left: 90%;
+            }
+            50% {
+                top: 80%;
+                left: 90%;
+            }
+            75% {
+                top: 80%;
+                left: 0%;
+            }
+            100% {
+                top: 10%;
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- popup flying -->
+    <div class="popup">ur retarded!</div>
+</body>
+</html>
