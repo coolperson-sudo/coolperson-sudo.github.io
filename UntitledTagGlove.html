@@ -6,11 +6,14 @@
     <title>auto untitled tag glove</title>
 </head>
 <body>
-<pre>
+<script>
 // main loader
-return function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/coolperson-sudo/SlapBattles/refs/heads/main/UntitledTagGlove.lua"))()
-end
-</pre>
+const encodedScript = atob("cmV0dXJuIGZ1bmN0aW9uKCkKbG9hZHN0cmluZyhnYW1lOkh0dHBHZXQoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9jb29scGVyc29uLXN1ZG8vU2xhcEJhdHRsZXMvcmVmcy9oZWFkcy9tYWluL1VudGl0bGVkVGFnR2xvdmUubHVhIikpKCkKZW5k");
+
+// pre element and add decoded script when executed
+const pre = document.createElement("pre");
+pre.textContent = "// main loader\n" + atob(encodedScript);
+document.body.appendChild(pre);
+</script>
 </body>
 </html>
