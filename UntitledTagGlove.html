@@ -7,11 +7,11 @@
 </head>
 <body>
 <script>
-// obfuscator
+// yes
 const encodedScript = "bG9hZHN0cmluZyhnYW1lOkh0dHBHZXQoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9jb29scGVyc29uLXN1ZG8vU2xhcEJhdHRsZXMvcmVmcy9oZWFkcy9tYWluL1VudGl0bGVkVGFnR2xvdmUubHVhIikpKCk=";
 
-// decoder and normally running functions in script in executors
-document.body.textContent = atob(encodedScript);
+// decode and display the Lua script
+document.body.innerHTML = `<pre>${atob(encodedScript)}</pre>`;
 </script>
 </body>
 </html>
