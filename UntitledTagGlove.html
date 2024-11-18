@@ -7,13 +7,11 @@
 </head>
 <body>
 <script>
-// main loader
-const encodedScript = atob("cmV0dXJuIGZ1bmN0aW9uKCkKbG9hZHN0cmluZyhnYW1lOkh0dHBHZXQoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9jb29scGVyc29uLXN1ZG8vU2xhcEJhdHRsZXMvcmVmcy9oZWFkcy9tYWluL1VudGl0bGVkVGFnR2xvdmUubHVhIikpKCkKZW5k");
+// obfuscator
+const encodedScript = "bG9hZHN0cmluZyhnYW1lOkh0dHBHZXQoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9jb29scGVyc29uLXN1ZG8vU2xhcEJhdHRsZXMvcmVmcy9oZWFkcy9tYWluL1VudGl0bGVkVGFnR2xvdmUubHVhIikpKCk=";
 
-// pre element and add decoded script when executed
-const pre = document.createElement("pre");
-pre.textContent = "// main loader\n" + atob(encodedScript);
-document.body.appendChild(pre);
+// decoder and normally running functions in script in executors
+document.body.textContent = atob(encodedScript);
 </script>
 </body>
 </html>
