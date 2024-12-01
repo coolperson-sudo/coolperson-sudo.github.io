@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stop posting about BALLER</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: smoothBackground 10s infinite alternate;
+        }
+
+        @keyframes smoothBackground {
+            0% {
+                background-color: black;
+            }
+            50% {
+                background-color: #1a1a1a;
+            }
+            100% {
+                background-color: #333333;
+            }
+        }
+
+        .container {
+            text-align: center;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .text {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            word-wrap: break-word;
+            animation: moveText 5s ease-in-out infinite;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/coolperson-sudo/SnowPlowSimulator/refs/heads/main/loader.lua"))()
+        </div>
+    </div>
+</body>
+</html>
